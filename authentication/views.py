@@ -1,5 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from .forms import SignupForm, AppkeyForm
 
@@ -21,12 +22,17 @@ def signup(request):
             user.appkey.access_token_secret = appkey_form.cleaned_data['access_token_secret']
             user.save()
 
+            messages.success(request, 'Registration successful!')
             return redirect('authentication:signin')
-    
-    else:
-        context = {
-            'signupform': SignupForm(),
-            'appkeyform': AppkeyForm(),
-        }
 
-    return render(request, 'auth/signup.html', context)
+        else:
+            messages.warning(request, 'Form is not valid')
+
+    return render(
+        request,
+        'auth/signup.html',
+        {
+            'signupform': SignupForm(),
+            'appkeyform': AppkeyForm()
+        }
+    )

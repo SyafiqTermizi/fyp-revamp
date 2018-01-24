@@ -22,10 +22,14 @@
                             {{ field }}
                         </div>
                     {% endfor %}
-                    <button type="submit">Sign up</button>
-                  </form>
+                    <button type="submit" class="btn btn-default">Sign up</button>
+                </form>
             </div>
         </div>
+
+        {% if messages %}
+            {% include 'message.html' %}
+        {% endif %}
     </div>
 </div>
 
