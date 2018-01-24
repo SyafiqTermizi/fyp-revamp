@@ -1,12 +1,33 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .forms import SignupForm, AppkeyForm
+from .forms import SignupForm, AppkeyForm, SigninForm
 
 
 def signin(request):
-    return render(request, 'auth/signin.html')
+    if request.method == 'POST':
+        signin_form = SigninForm(request.POST)
+
+        if signin_form.is_valid():
+            usn = signin_form.cleaned_data['username']
+            pwd = signin_form.cleaned_data['password']
+            user = authenticate(request, username=usn, password=pwd)
+
+            if user is not None:
+                login(request, user)
+                return redirect('dashboard:index')
+
+            else:
+                messages.warning(request, 'Credentials entered are not valid')
+
+    return render(
+        request,
+        'auth/signin.html',
+        {
+            'signinform': SigninForm()
+        }
+    )
 
 def signup(request):
     if request.method == 'POST':
@@ -36,3 +57,8 @@ def signup(request):
             'appkeyform': AppkeyForm()
         }
     )
+
+def signout(request):
+    logout(request)
+    messages.success(request, 'Logged out successfully')
+    return redirect('authentication:signin')

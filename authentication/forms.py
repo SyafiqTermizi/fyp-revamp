@@ -66,3 +66,25 @@ class AppkeyForm(ModelForm):
                 'placeholder':'Access Token Secret',
             }
         )
+
+class SigninForm(forms.Form):
+
+    username = forms.CharField(
+        max_length=200,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder':'Username',
+                'class':'form-control',
+            }
+        )
+    )
+
+    password = forms.CharField(
+        max_length=200,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder':'Password',
+                'class':'form-control',
+            }
+        )
+    )
