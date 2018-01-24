@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+        <div class="panel panel-default text-center">
+            <div class="panel-header">
+                <h4>REGISTER</h4>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in signupform %}
+                        <div class="form-group">
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+
+                    {% for field in appkeyform %}
+                        <div class="form-group">
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit">Sign up</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
