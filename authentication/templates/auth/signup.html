@@ -2,34 +2,49 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-md-2 col-md-offset-5">
-        <div class="panel panel-default panel-form text-center">
-            <div class="panel-header">
-                <h4>REGISTER</h4>
-            </div>
-            <div class="panel-body">
-                <form method="post">
-                    {% csrf_token %}
-                    {% for field in signupform %}
-                        <div class="form-group">
-                            {{ field }}
-                        </div>
-                    {% endfor %}
+<div class="container">    
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default panel-form text-center">
+                <div class="panel-heading">
+                    <h4>REGISTER</h4>
+                </div>
+                <div class="panel-body">
+                    <form method="post">
+                        {% csrf_token %}
 
-                    {% for field in appkeyform %}
-                        <div class="form-group">
-                            {{ field }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-left"><b>Personal Details</b></h6>
+                                {% for field in signupform %}
+                                    <div class="form-group">
+                                        {{ field }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-6">
+                                    <h6 class="text-left"><b>Twitter API keys</b></h6>
+                                {% for field in appkeyform %}
+                                    <div class="form-group">
+                                        {{ field }}
+                                    </div>
+                            {% endfor %}
+                            </div>
                         </div>
-                    {% endfor %}
-                    <button type="submit" class="btn btn-default">Sign up</button>
-                </form>
+                    </form>
+                </div>
+                <hr>
+                <div class="panel-body">
+                    <button type="submit" class="btn btn-blue" style="width:50%;">Sign up</button>
+                    <br><br>
+                    <a href="{% url 'authentication:signin' %}">Already a member ?</a>
+                </div>
             </div>
+
+            {% if messages %}
+                {% include 'message.html' %}
+            {% endif %}
         </div>
-
-        {% if messages %}
-            {% include 'message.html' %}
-        {% endif %}
     </div>
 </div>
 

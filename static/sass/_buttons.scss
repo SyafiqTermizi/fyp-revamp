@@ -1,0 +1,15 @@
+.btn {
+    border-radius: 0;
+}
+
+.btn-blue {
+    background-color: $color-blue;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-blue:hover {
+    background-color: darken($color-blue, 15%);
+    color: white;
+    font-weight: bold;
+}

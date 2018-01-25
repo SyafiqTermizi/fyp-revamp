@@ -1,4 +1,29 @@
+body {
+  background-color: #EEEEEE; }
+
+input[type="text"] {
+  border-radius: 0; }
+
+input[type="password"] {
+  border-radius: 0; }
+
+.btn {
+  border-radius: 0; }
+
+.btn-blue {
+  background-color: #49B4E2;
+  color: white;
+  font-weight: bold; }
+
+.btn-blue:hover {
+  background-color: #1f8fc0;
+  color: white;
+  font-weight: bold; }
+
 .panel-form {
+  border-radius: 0;
   margin-top: 25vh; }
+  .panel-form .panel-heading {
+    background-color: white; }
 
 /*# sourceMappingURL=styles.css.map */
