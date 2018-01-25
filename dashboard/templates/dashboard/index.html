@@ -10,6 +10,7 @@
             <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
         {% endif %}
         <a href="{% url 'authentication:signout' %}">Logout</a>
+        <a href="{% url 'twittur:keyword' %}">Search by Keyword</a>
     </div>
 </div>
 
