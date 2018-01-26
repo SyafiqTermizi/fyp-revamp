@@ -10,7 +10,8 @@ def keyword_search(request, keyword, count):
     auth = tweepy.OAuthHandler(k.consumer_key, k.consumer_secret)
     auth.set_access_token(k.access_token, k.access_token_secret)
     api = tweepy.API(auth)
-    return True
+    search_result = api.search(q=keyword, count=count, tweet_mode='extended')
+    return search_result
 
 
 # auth = tweepy.OAuthHandler("oMfqM2x8CMHUxbrBoLFbs180n", "SjWSufD7aXDGtp8ZGQvb5OL3qkAJW6nJX7FWztH7d85QIfn9ca")
