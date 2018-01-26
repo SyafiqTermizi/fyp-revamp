@@ -7,6 +7,9 @@ input[type="text"] {
 input[type="password"] {
   border-radius: 0; }
 
+input[type="number"] {
+  border-radius: 0; }
+
 .btn {
   border-radius: 0; }
 

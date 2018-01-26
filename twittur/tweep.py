@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from authentication.models import Appkey
 
 
-def keyword_search(request):
+def keyword_search(request, keyword, count):
     k = Appkey.objects.get(user=request.user.id)
     auth = tweepy.OAuthHandler(k.consumer_key, k.consumer_secret)
     auth.set_access_token(k.access_token, k.access_token_secret)
