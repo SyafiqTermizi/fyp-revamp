@@ -15,6 +15,15 @@ def keyword_search(request, keyword, count):
     return search_result
 
 
+def user_search(request, screen_name, count):
+    k = Appkey.objects.get(user=request.user.id)
+    auth = tweepy.OAuthHandler(k.consumer_key, k.consumer_secret)
+    auth.set_access_token(k.access_token, k.access_token_secret)
+    api = tweepy.API(auth)
+    search_result = api.user_timeline(screen_name=screen_name, count=count, tweet_mode='extended')
+
+    return search_result
+
 # auth = tweepy.OAuthHandler("oMfqM2x8CMHUxbrBoLFbs180n", "SjWSufD7aXDGtp8ZGQvb5OL3qkAJW6nJX7FWztH7d85QIfn9ca")
 # auth.set_access_token('475820825-HAUYVVI9qJljIPzNqVFwg9y5hhe5DKn3nqeP77tW', 'l43KrHbXgi10tTvQTzpWRTGr33PsANVhmRnxhC7NaVi8U')
 

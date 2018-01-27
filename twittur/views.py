@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-from .forms import KeywordForm
+from .forms import KeywordForm, UserForm
 from . import tweep
 
 
@@ -26,7 +26,7 @@ def search_keyword(request):
                 request,
                 'twittur/show.html',
                 {
-                    'result': results,
+                    'result': results,  
                     'keyword': keyword,
                 }
             )
@@ -38,4 +38,24 @@ def search_keyword(request):
     )
 
 def search_user(request):
-    return None
+    if request.method == 'POST':
+        user_search_form = UserForm(request.POST)
+
+        if user_search_form.is_valid():
+            username = user_search_form.cleaned_data['username']
+            count = user_search_form.cleaned_data['count']
+            results = tweep.user_search(request, username, count)
+
+            return render(
+                request,
+                'twittur/show.html',
+                {
+                    'result': results,
+                    'keyword': username,
+                }
+            )
+    return render(
+        request,
+        'twittur/keyword.html',
+        {'keywordForm': UserForm()}
+    )

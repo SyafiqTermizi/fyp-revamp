@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{% url 'dashboard:index' %}">Home</a></li>
                 <li><a href="{% url 'twittur:keyword' %}">Keyword Search</a></li>
-                <li><a href="#">User Search</a></li>
+                <li><a href="{% url 'twittur:user' %}">User Search</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'authentication:signout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
