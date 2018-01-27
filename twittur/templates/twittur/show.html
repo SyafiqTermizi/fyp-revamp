@@ -7,35 +7,39 @@
 
 {% block content %}
 
+{% include 'nav.html' %}
+
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <h1 class="text-center">Results</h1>
-        </div>
         <div class="col-md-12 table-responsive">
-
-            <table id="example" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>User Name <i class="fa fa-sort"></i></th>
-                        <th>Tweet <i class="fa fa-sort"></i></th>
-                        <th>Fav <i class="fa fa-sort"></i></th>
-                        <th>Rt <i class="fa fa-sort"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for x in result %}
-                    <tr>
-                        <td>{{ x.user.name }}</td>
-                        <td>{{ x.full_text }}</td>
-                        <td>{{ x.favorite_count }}</td>
-                        <td>{{ x.retweet_count }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-
+            <div class="panel panel-default panel-form">
+                <div class="panel-heading">
+                    <h4>Search result for: <b>{{ keyword }}</b></h4>
+                </div>
+                <div class="panel-body">
+                    <table id="example" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>User Name <i class="fa fa-sort"></i></th>
+                                <th>Tweet <i class="fa fa-sort"></i></th>
+                                <th>Fav <i class="fa fa-sort"></i></th>
+                                <th>Rt <i class="fa fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for x in result %}
+                            <tr>
+                                <td>{{ x.user.name }}</td>
+                                <td>{{ x.full_text }}</td>
+                                <td>{{ x.favorite_count }}</td>
+                                <td>{{ x.retweet_count }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        
+                </div>
+            </div>
         </div>
     </div>
 </div>

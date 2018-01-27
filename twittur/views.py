@@ -22,7 +22,14 @@ def search_keyword(request):
             # for x in results:
             #     json_list.append(json.dumps(x._json))
 
-            return render(request, 'twittur/show.html', {'result':results})
+            return render(
+                request,
+                'twittur/show.html',
+                {
+                    'result': results,
+                    'keyword': keyword,
+                }
+            )
 
     return render(
         request,

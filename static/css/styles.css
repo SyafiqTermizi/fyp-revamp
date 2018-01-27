@@ -1,6 +1,23 @@
 body {
   background-color: #EEEEEE; }
 
+.navbar-color {
+  background-color: #253C5B;
+  border-radius: 0;
+  color: white;
+  font-weight: bold; }
+  .navbar-color .navbar-brand {
+    color: white; }
+  .navbar-color .navbar-brand:hover {
+    color: #49B4E2; }
+  .navbar-color .navbar-text {
+    color: white; }
+  .navbar-color .navbar-nav li a {
+    color: white; }
+  .navbar-color .navbar-nav li a:hover, .navbar-color .navbar-nav li a:focus {
+    color: #49B4E2;
+    background-color: transparent; }
+
 input[type="text"] {
   border-radius: 0; }
 
@@ -46,8 +63,7 @@ input[type="number"] {
   text-decoration: none; }
 
 .panel-form {
-  border-radius: 0;
-  margin-top: 25vh; }
+  border-radius: 0; }
   .panel-form .panel-heading {
     background-color: white; }
 

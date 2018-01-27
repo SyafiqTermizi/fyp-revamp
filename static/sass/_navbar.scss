@@ -1,0 +1,30 @@
+.navbar-color {
+    background-color: $color-blue-dark;
+    border-radius: 0;
+    color: white;
+    font-weight: bold;
+
+    .navbar-brand {
+        color: white;
+    }
+
+    .navbar-brand:hover {
+        color: $color-blue;
+    }
+
+    .navbar-text {
+        color:white;
+    }
+
+    .navbar-nav {
+        li {
+            a {
+                color: white;
+            }
+            a:hover, a:focus {
+                color: $color-blue;
+                background-color: transparent;
+            }
+        }
+    }
+}
