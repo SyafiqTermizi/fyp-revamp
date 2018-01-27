@@ -8,6 +8,10 @@
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    {% block link %}
+    {% endblock %}
 </head>
 <body>
 
@@ -16,5 +20,8 @@
 
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
+
+    {% block script %}
+    {% endblock %}
 </body>
 </html>

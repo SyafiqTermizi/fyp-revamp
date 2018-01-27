@@ -13,3 +13,30 @@
     color: white;
     font-weight: bold;
 }
+
+.paginate_button {
+    text-decoration:none;
+    background-color: $color-blue;
+    color: white;
+    font-weight: bold;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+.paginate_button:hover {
+    background-color: darken($color-blue, 15%);
+    text-decoration:none;
+
+}
+
+.paginate_button.current {
+    background-color: darken($color-blue, 15%) !important;
+    text-decoration:none;
+
+}

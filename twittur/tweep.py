@@ -11,6 +11,7 @@ def keyword_search(request, keyword, count):
     auth.set_access_token(k.access_token, k.access_token_secret)
     api = tweepy.API(auth)
     search_result = api.search(q=keyword, count=count, tweet_mode='extended')
+
     return search_result
 
 

@@ -23,6 +23,28 @@ input[type="number"] {
   color: white;
   font-weight: bold; }
 
+.paginate_button {
+  text-decoration: none;
+  background-color: #49B4E2;
+  color: white;
+  font-weight: bold;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 3px; }
+
+.paginate_button:hover {
+  background-color: #1f8fc0;
+  text-decoration: none; }
+
+.paginate_button.current {
+  background-color: #1f8fc0 !important;
+  text-decoration: none; }
+
 .panel-form {
   border-radius: 0;
   margin-top: 25vh; }
