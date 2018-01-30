@@ -59,6 +59,3 @@ def search_user(request):
         'twittur/keyword.html',
         {'keywordForm': UserForm()}
     )
-
-def save(request):
-    
