@@ -3,18 +3,58 @@
 {% block content %}
 {% include 'nav.html' %}
 
-<div class="row">
-    <div class="col-md-12 text-center">
-        <h1>Dashboard</h1>
-        <br>
-        {% if user.is_authenticated %}
-            <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-        {% endif %}
-        <a href="{% url 'authentication:signout' %}">Logout</a>
-        <a href="{% url 'twittur:keyword' %}">Search by Keyword</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Hello, {{ user.get_username|title }}</h1>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="row text-center">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Recently saved tweets:</h4>
+                    {% for x in recent_search %}
+                        <hr>
+                        <a href="{% url 'twittur:show' x.id %}">
+                            <h4 class="text-left">{{ x.keyword }}</h4>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Total tweets saved:</h4>
+                    <hr>
+                    <h1>{{ saved_tweets }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Total user saved:</h4>
+                    <hr>
+                    <h1>{{ searched_user }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Total keyword saved:</h4>
+                    <hr>
+                    <h1>{{ searched_keyword }}</h1>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 {% if messages %}
     {% include 'message.html' %}
 {% endif %}

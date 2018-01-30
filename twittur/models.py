@@ -10,4 +10,5 @@ class SearchItem(models.Model):
 
 class Tweets(models.Model):
     search_word = models.ForeignKey(SearchItem, on_delete=models.CASCADE)
+    user = models.IntegerField()
     data = JSONField()

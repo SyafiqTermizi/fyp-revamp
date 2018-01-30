@@ -53,6 +53,14 @@ def search_user(request):
             count = user_search_form.cleaned_data['count']
             results = tweep.user_search(request, username, count)
 
+            json_list = []
+            for x in results:
+                json_list.append(json.dumps(x._json))
+
+            request.session['tweets'] = json_list
+            request.session['keyword'] = username
+            request.session['is_user'] = True
+
             return render(
                 request,
                 'twittur/show.html',
@@ -67,7 +75,6 @@ def search_user(request):
         {'keywordForm': UserForm()}
     )
 
-
 @login_required
 def save(request):
     tweets = request.session['tweets']
@@ -78,7 +85,7 @@ def save(request):
     s = SearchItem(user=u, keyword=keyword, is_user_search=is_user)
     s.save()
     for x in tweets:
-        s.tweets_set.create(data=x)
+        s.tweets_set.create(data=x, user=request.user.id)
 
     del request.session['tweets']
     del request.session['keyword']
@@ -87,3 +94,21 @@ def save(request):
     messages.success(request, 'Data successfuly saved to DB')
 
     return redirect('dashboard:index')
+
+@login_required
+def show_tweets(request, search_id):
+    tweets = Tweets.objects.filter(search_word=search_id)
+
+    result = []
+    for x in tweets:
+        result.append(json.loads(x.data))
+
+    return render(
+        request,
+        'twittur/show.html',
+        {
+            'result': result,
+            'disabled': 'disabled',
+            'style': 'pointer-events: none',
+        }
+    )

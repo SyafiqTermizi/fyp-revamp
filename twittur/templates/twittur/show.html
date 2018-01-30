@@ -19,7 +19,7 @@
                             <h4>Search result for: <b>{{ keyword }}</b></h4>
                         </div>
                         <div class="col-md-6 text-right">
-                            <a href="{% url 'twittur:save' %}" class="btn btn-blue">Save</a>
+                            <a href="{% url 'twittur:save' %}" class="btn btn-blue" {{ disabled }} style="{{ style }}" >Save</a>
                         </div>
                     </div>
                 </div>
