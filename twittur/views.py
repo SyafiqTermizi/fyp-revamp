@@ -24,6 +24,21 @@ def search_keyword(request):
             for x in results:
                 json_list.append(json.dumps(x._json))
 
+            try:
+                del request.session['tweets']
+            except KeyError:
+                pass
+
+            try:
+                del request.session['keyword']
+            except KeyError:
+                pass
+
+            try:
+                del request.session['is_user']
+            except KeyError:
+                pass
+
             request.session['tweets'] = json_list
             request.session['keyword'] = keyword
             request.session['is_user'] = False
@@ -56,6 +71,21 @@ def search_user(request):
             json_list = []
             for x in results:
                 json_list.append(json.dumps(x._json))
+
+            try:
+                del request.session['tweets']
+            except KeyError:
+                pass
+
+            try:
+                del request.session['keyword']
+            except KeyError:
+                pass
+
+            try:
+                del request.session['is_user']
+            except KeyError:
+                pass
 
             request.session['tweets'] = json_list
             request.session['keyword'] = username
