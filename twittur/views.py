@@ -1,8 +1,9 @@
 import json
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 from .forms import KeywordForm, UserForm
 from .models import SearchItem, Tweets
@@ -73,6 +74,16 @@ def save(request):
     keyword = request.session['keyword']
     is_user = request.session['is_user']
 
-    q = SearchItem(user=request.user.id, keyword=keyword, is_user_search=is_user)
-    q.twees_set.create()
-    return None
+    u = User.objects.get(pk=request.user.id)
+    s = SearchItem(user=u, keyword=keyword, is_user_search=is_user)
+    s.save()
+    for x in tweets:
+        s.tweets_set.create(data=x)
+
+    del request.session['tweets']
+    del request.session['keyword']
+    del request.session['is_user']
+
+    messages.success(request, 'Data successfuly saved to DB')
+
+    return redirect('dashboard:index')
