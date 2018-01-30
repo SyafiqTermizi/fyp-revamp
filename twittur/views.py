@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 from .forms import KeywordForm, UserForm
+from .models import SearchItem, Tweets
 from . import tweep
 
 
@@ -18,15 +19,19 @@ def search_keyword(request):
             count = keyword_search_form.cleaned_data['count']
             results = tweep.keyword_search(request, keyword, count)
 
-            # json_list = []
-            # for x in results:
-            #     json_list.append(json.dumps(x._json))
+            json_list = []
+            for x in results:
+                json_list.append(json.dumps(x._json))
+
+            request.session['tweets'] = json_list
+            request.session['keyword'] = keyword
+            request.session['is_user'] = False
 
             return render(
                 request,
                 'twittur/show.html',
                 {
-                    'result': results,  
+                    'result': results,
                     'keyword': keyword,
                 }
             )
@@ -37,6 +42,7 @@ def search_keyword(request):
         {'keywordForm': KeywordForm()}
     )
 
+@login_required
 def search_user(request):
     if request.method == 'POST':
         user_search_form = UserForm(request.POST)
@@ -59,3 +65,14 @@ def search_user(request):
         'twittur/keyword.html',
         {'keywordForm': UserForm()}
     )
+
+
+@login_required
+def save(request):
+    tweets = request.session['tweets']
+    keyword = request.session['keyword']
+    is_user = request.session['is_user']
+
+    q = SearchItem(user=request.user.id, keyword=keyword, is_user_search=is_user)
+    q.twees_set.create()
+    return None
