@@ -1,5 +1,6 @@
 # fyp-revamp
 
 ## TODO:
-* prevent same keyword being saved twice
-* prevent same tweets being saved twice
+- [ ] move out DB access from tweep.py
+- [ ] prevent same keyword being saved twice
+- [ ] prevent same tweets being saved twice
