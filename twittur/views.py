@@ -9,6 +9,9 @@ from .forms import KeywordForm, UserForm
 from .models import SearchItem, Tweets
 from . import tweep
 
+# TODO:
+# - retain tweets session untill user click back
+# - untangle the code
 
 @login_required
 def search_keyword(request):
