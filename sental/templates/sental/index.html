@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include 'nav.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Choose item to analyse</h4>
+                </div>
+                <div class="panel-body">
+                {% for item in saved_search %}
+                    <a href="#">{{ item.keyword }}</a>
+                    <hr>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
