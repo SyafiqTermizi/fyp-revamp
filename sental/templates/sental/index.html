@@ -12,7 +12,7 @@
                 </div>
                 <div class="panel-body">
                 {% for item in saved_search %}
-                    <a href="#">{{ item.keyword }}</a>
+                    <a href="{% url 'sental:analyse' item.id %}">{{ item.keyword }}</a>
                     <hr>
                 {% endfor %}
                 </div>

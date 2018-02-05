@@ -11,7 +11,6 @@ from . import tweep
 
 # TODO:
 # - retain tweets session untill user click back
-# - untangle the code
 
 @login_required
 def search_keyword(request):

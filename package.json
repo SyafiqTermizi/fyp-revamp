@@ -1,0 +1,23 @@
+{
+  "name": "fyp",
+  "version": "1.0.0",
+  "description": "## TODO: - [ ] move out DB access from tweep.py - [ ] prevent same keyword being saved twice - [ ] prevent same tweets being saved twice",
+  "main": "index.js",
+  "dependencies": {
+    "fusioncharts": "^3.12.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://SyafiqTermizi@github.com/SyafiqTermizi/fyp-revamp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SyafiqTermizi/fyp-revamp/issues"
+  },
+  "homepage": "https://github.com/SyafiqTermizi/fyp-revamp#readme"
+}

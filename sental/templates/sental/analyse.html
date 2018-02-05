@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include 'nav.html' %}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Positive Tweets:
+                </div>
+                <div class="panel-body">
+                    {{ pos }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Neutral Tweets:
+                </div>
+                <div class="panel-body">
+                    {{ neut }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Negative Tweets:
+                </div>
+                <div class="panel-body">
+                    {{ neg }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
