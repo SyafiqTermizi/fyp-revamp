@@ -1,14 +1,17 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from twittur.models import SearchItem, Tweets
 from twittur.models import Tweets
 
 from . import classify
 from .fusioncharts import FusionCharts
 
+@login_required
 def index(request):
     saved_searched = SearchItem.objects.filter(user=request.user.id)
     return render(request, 'sental/index.html', {'saved_search':saved_searched})
 
+@login_required
 def analyse(request, search_id):
     tweets = Tweets.objects.filter(search_word=search_id)
     sental = classify.analyse(tweets)
