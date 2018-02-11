@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
+{% block link %}
+{% load static %}
+<script src="{% static '/js/fusioncharts.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 {% include 'nav.html' %}
 <div class="container">
-    <div class="row text-center">
+    <!-- <div class="row text-center">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -33,6 +38,11 @@
                     {{ neg }}
                 </div>
             </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div id="chart">{{ output|safe }}</div>
         </div>
     </div>
 </div>

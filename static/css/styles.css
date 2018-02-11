@@ -1,6 +1,9 @@
 body {
   background-color: #EEEEEE; }
 
+#pie {
+  background-color: red !important; }
+
 .navbar-color {
   background-color: #253C5B;
   border-radius: 0;
